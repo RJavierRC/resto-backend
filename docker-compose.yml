@@ -1,0 +1,27 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: resto
+      POSTGRES_USER: resto
+      POSTGRES_PASSWORD: resto
+    ports:
+      - "5432:5432"
+    volumes:
+      - resto_db_data:/var/lib/postgresql/data
+
+  api:
+    build: .
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/resto
+      SPRING_DATASOURCE_USERNAME: resto
+      SPRING_DATASOURCE_PASSWORD: resto
+    ports:
+      - "8080:8080"
+
+volumes:
+  resto_db_data:

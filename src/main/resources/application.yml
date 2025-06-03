@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/resto
+    username: resto
+    password: resto
+    driver-class-name: org.postgresql.Driver      # ← añade esta línea
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+springdoc:
+  api-docs.path: /v3/api-docs
+  swagger-ui.path: /swagger-ui.html
+server:
+  port: 8080
