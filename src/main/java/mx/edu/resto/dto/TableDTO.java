@@ -1,10 +1,13 @@
+// Ubicación: src/main/java/mx/edu/resto/dto/TableDTO.java
 package mx.edu.resto.dto;
 
+import lombok.Data;
 import java.util.UUID;
 
-public record TableDTO(
-        UUID id,
-        Integer number,
-        String status,
-        UUID currentOrderId      // null si la mesa está libre
-) {}
+@Data
+public class TableDTO {
+    private UUID id;
+    private int   number;
+    private String status; // FREE, BUSY, CLOSED 
+    private UUID orderId;  // null si está libre / cerrada 
+}
